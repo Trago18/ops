@@ -8,35 +8,35 @@ commonLabels:
   team: devops
 
 commonAnnotations:
-  note: "Este es el ambiente de STAGE"
+  note: Este es el ambiente de STAGE
 
 resources:
 - ns.yaml
 - ../../base
 
 patchesStrategicMerge:
-  - deploy-strategic-patch.yaml
+- deploy-strategic-patch.yaml
+
+
 
 patches:
-- target:
+- path: cm-patch.yaml
+  target:
     kind: ConfigMap
     name: cm-private-api
-  path: cm-patch.yaml
-
-- target:
+- path: ing-patch.yaml
+  target:
     kind: Ingress
     name: public-api
-  path: ing-patch.yaml
-
-- target:
-    kind: Service
-    name: public-api
-  patch: |-
+- patch: |-
     - op: add
       path: /spec/type
       value: ClusterIP
+  target:
+    kind: Service
+    name: public-api
 
 images:
-  - name: KUSTOMIZE-DEFINED
-    newName: trago18/kubelabs_publicapi
-    newTag: 1.0.0
+- name: KUSTOMIZE-DEFINED
+  newName: trago18/kubelabs_publicapi
+  newTag: 1.0.1
