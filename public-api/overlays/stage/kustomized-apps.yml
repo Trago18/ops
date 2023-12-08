@@ -85,7 +85,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: cm-private-api
-        image: trago18/kubelabs_publicapi:1.0.1
+        image: trago18/kubelabs_publicapi:3.0.0
         imagePullPolicy: Always
         name: public-api
         ports:

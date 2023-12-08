@@ -39,4 +39,4 @@ patches:
 images:
 - name: KUSTOMIZE-DEFINED
   newName: trago18/kubelabs_publicapi
-  newTag: 1.0.1
+  newTag: 3.0.0
