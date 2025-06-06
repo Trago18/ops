@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: trago-api
+spec:
+  destination:
+    name: ''
+    namespace: trago
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: trago-api
+    repoURL: 'git@github.com:Trago18/ops.git'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
